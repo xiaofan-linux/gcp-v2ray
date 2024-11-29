@@ -14,7 +14,7 @@ RUN echo "mkdir v2ray ..." \
 
 # copy in static files
 # all scripts are 0755 (rwx r-x r-x)
-COPY --chmod=0755 entrypoint /usr/local/bin/
+COPY entrypoint /usr/local/bin/
 COPY config.json /etc/v2ray/
 
 RUN echo "Installing v2ray ..." \
@@ -24,6 +24,7 @@ RUN echo "Installing v2ray ..." \
     && cd /tmp; unzip /tmp/v2ray-linux.${TARGETARCH}.zip \
     && cd /tmp; mv v2ray /usr/bin/ \
     && cd /tmp; mv geosite.dat geoip.dat /usr/local/share/v2ray/ \
+    && chmod u+x /usr/local/bin/entrypoint \
     && rm -rf /tmp/*
 
 EXPOSE 8080
