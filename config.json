@@ -1,55 +1,54 @@
-{
-  "log": {
-    "loglevel": "warning"
-  },
-  "inbounds": [
     {
-      "port": "{PORT}",
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
+      "log": {
+        "loglevel": "warning"
+      },
+      "inbounds": [
           {
-            "id": "{ID}",
-            "alterId": {ALTERID}
+              "tag": "http-in",
+              "port": "{PORT}",
+              "listen": "::",
+              "protocol": "http",
+              "settings": {
+                  "timeout": 0,
+                  "accounts": [
+                    {
+                      "user": "${USERNAME}",
+                      "pass": "${PASSWORD}"
+                    }
+                  ],
+                  "allowTransparent": false,
+                  "userLevel": 0
+              }
+          }
+      ],
+      "outbounds": [
+        {
+          "protocol": "freedom",
+          "settings": {}
+        },
+        {
+          "protocol": "blackhole",
+          "settings": {},
+          "tag": "block"
+        }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          {
+            "type": "field",
+            "outboundTag": "block",
+            "protocol": [
+              "bittorrent"
+            ]
           }
         ]
       },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/"
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "type": "field",
-        "outboundTag": "block",
-        "protocol": [
-          "bittorrent"
+      "dns": {
+        "server": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "localhost"
         ]
       }
-    ]
-  },
-  "dns": {
-    "server": [
-      "8.8.8.8",
-      "8.8.4.4",
-      "localhost"
-    ]
-  }
-}
+    }
