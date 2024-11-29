@@ -12,8 +12,8 @@
                   "timeout": 0,
                   "accounts": [
                     {
-                      "user": "${USERNAME}",
-                      "pass": "${PASSWORD}"
+                      "user": "{USERNAME}",
+                      "pass": "{PASSWORD}"
                     }
                   ],
                   "allowTransparent": false,
