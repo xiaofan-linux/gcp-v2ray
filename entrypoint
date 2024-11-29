@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# 检查输入的环境变量是否存在，如果没有则使用默认值
+PORT=${PORT:-8080}
+ID=${ID:-"558240e1-765c-4299-ac56-404abe300033"}
+ALTERID=${ALTERID:-0}
+
+# 配置文件路径
+CONFIG_FILE="/etc/v2ray/config.json"
+
+# 输出调试信息
+echo "Starting with port: $PORT, id: $ID, alterId: $ALTERID"
+
+# 使用 sed 替换配置文件中的参数
+sed -i "s/{PORT}/$PORT/g" $CONFIG_FILE
+sed -i "s/{ID}/$ID/g" $CONFIG_FILE
+sed -i "s/{ALTERID}/$ALTERID/g" $CONFIG_FILE
+
+# 打印修改后的配置，检查替换是否成功
+echo "Updated config.json:"
+cat $CONFIG_FILE
+
+# 启动 V2Ray
+echo "Starting V2Ray..."
+exec /usr/bin/v2ray run -config $CONFIG_FILE
