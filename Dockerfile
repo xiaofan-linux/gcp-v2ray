@@ -14,7 +14,7 @@ RUN echo "mkdir v2ray ..." \
 
 # copy in static files
 # all scripts are 0755 (rwx r-x r-x)
-COPY entrypoint /usr/local/bin/
+COPY --chmod=0755 entrypoint /usr/local/bin/
 COPY config.json /etc/v2ray/
 
 RUN echo "Installing v2ray ..." \
