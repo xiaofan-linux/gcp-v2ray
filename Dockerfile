@@ -14,8 +14,8 @@ RUN echo "mkdir v2ray ..." \
 
 # copy in static files
 # all scripts are 0755 (rwx r-x r-x)
-COPY --chmod=0755 files/usr/local/bin/* /usr/local/bin/
-COPY --chmod=0644 files/etc/v2ray/* /etc/v2ray/
+COPY --chmod=0755 entrypoint /usr/local/bin/
+COPY --chmod=0644 config.json /etc/v2ray/
 
 RUN echo "Installing v2ray ..." \
     && wget -q --tries=5 --output-document=/tmp/v2ray-linux.${TARGETARCH}.zip "${V2RAY_URL}" \
