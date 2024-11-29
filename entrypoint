@@ -2,8 +2,10 @@
 
 # 检查输入的环境变量是否存在，如果没有则使用默认值
 PORT=${PORT:-8080}
-ID=${ID:-"558240e1-765c-4299-ac56-404abe300033"}
-ALTERID=${ALTERID:-0}
+USERNAME=${USERNAME:-"admin"}
+PASSWORD=${PASSWORD:-"admin"}
+# ID=${ID:-"558240e1-765c-4299-ac56-404abe300033"}
+# ALTERID=${ALTERID:-0}
 
 # 配置文件路径
 CONFIG_FILE="/etc/v2ray/config.json"
