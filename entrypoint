@@ -13,8 +13,10 @@ echo "Starting with port: $PORT, id: $ID, alterId: $ALTERID"
 
 # 使用 sed 替换配置文件中的参数
 sed -i "s/{PORT}/$PORT/g" $CONFIG_FILE
-sed -i "s/{ID}/$ID/g" $CONFIG_FILE
-sed -i "s/{ALTERID}/$ALTERID/g" $CONFIG_FILE
+sed -i "s/{USERNAME}/$USERNAME/g" $CONFIG_FILE
+sed -i "s/{PASSWORD}/$PASSWORD/g" $CONFIG_FILE
+# sed -i "s/{ID}/$ID/g" $CONFIG_FILE
+# sed -i "s/{ALTERID}/$ALTERID/g" $CONFIG_FILE
 
 # 打印修改后的配置，检查替换是否成功
 echo "Updated config.json:"
